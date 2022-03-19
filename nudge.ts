@@ -5,12 +5,12 @@ const args = parse(Deno.args, {
   default: {
     port: 8080,
     cmd: "echo",
-    args: ["hello world"],
+    args: "hello world",
   },
 });
 
 const port = args.port as number;
-const cmd = [args.cmd as string, ...args.args as string[]];
+const cmd = [args.cmd as string, args.args];
 
 serve(() => {
   Deno.run({ cmd });
