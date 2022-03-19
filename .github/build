@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+deno compile --allow-net --allow-run \
+    --target=aarch64-apple-darwin \
+    --output nudge-aarch64-apple-darwin \
+    nudge.ts
+
+deno compile --allow-net --allow-run \
+    --target=x86_64-apple-darwin \
+    --output nudge-x86_64-apple-darwin \
+    nudge.ts
+
+deno compile --allow-net --allow-run \
+    --target=x86_64-unknown-linux-gnu \
+    --output nudge-x86_64-unknown-linux-gnu \
+    nudge.ts
