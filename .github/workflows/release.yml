@@ -18,7 +18,7 @@ jobs:
           --allow-net
           --allow-run
           --target=aarch64-apple-darwin
-          --output aarch64-apple-darwin/nudge
+          --output nudge-aarch64-apple-darwin
           nudge.ts
       - name: 🔨 Nudge for 🍎
         run: >-
@@ -26,7 +26,7 @@ jobs:
           --allow-net
           --allow-run
           --target=x86_64-apple-darwin
-          --output x86_64-apple-darwin/nudge
+          --output nudge-x86_64-apple-darwin
           nudge.ts
       - name: 🔨 Nudge for 🐧
         run: >-
@@ -34,10 +34,10 @@ jobs:
           --allow-net
           --allow-run
           --target=x86_64-unknown-linux-gnu
-          --output x86_64-unknown-linux-gnu/nudge
+          --output nudge-x86_64-unknown-linux-gnu
           nudge.ts
       - name: Nudge the release binaries
         uses: AButler/upload-release-assets@v2.0
         with:
-          files: "*/nudge"
+          files: "nudge-*"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
