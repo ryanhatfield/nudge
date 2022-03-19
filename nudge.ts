@@ -3,9 +3,9 @@ import { serve } from "https://deno.land/std@0.127.0/http/server.ts";
 
 const args = parse(Deno.args, {
   default: {
-    port: 8080,
+    port: 4325,
     cmd: "echo",
-    args: "hello world",
+    args: "nudge",
   },
 });
 
