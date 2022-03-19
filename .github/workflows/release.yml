@@ -20,11 +20,6 @@ jobs:
           --target=aarch64-apple-darwin
           --output aarch64-apple-darwin/nudge
           nudge.ts
-      - name: Nudge the 🍎 💪 binary
-        uses: actions/upload-artifact@v3.0.0
-        with:
-          name: aarch64-apple-darwin
-          path: aarch64-apple-darwin/nudge
       - name: 🔨 Nudge for 🍎
         run: >-
           deno compile
@@ -33,11 +28,6 @@ jobs:
           --target=x86_64-apple-darwin
           --output x86_64-apple-darwin/nudge
           nudge.ts
-      - name: Nudge the 🍎 binary
-        uses: actions/upload-artifact@v3.0.0
-        with:
-          name: x86_64-apple-darwin
-          path: x86_64-apple-darwin/nudge
       - name: 🔨 Nudge for 🐧
         run: >-
           deno compile
@@ -46,8 +36,8 @@ jobs:
           --target=x86_64-unknown-linux-gnu
           --output x86_64-unknown-linux-gnu/nudge
           nudge.ts
-      - name: Nudge the 🐧 binary
-        uses: actions/upload-artifact@v3.0.0
+      - name: Nudge the release binaries
+        uses: AButler/upload-release-assets@v2.0
         with:
-          name: x86_64-unknown-linux-gnu
-          path: x86_64-unknown-linux-gnu/nudge
+          files: "*/nudge"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
