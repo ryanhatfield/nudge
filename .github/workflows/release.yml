@@ -18,27 +18,36 @@ jobs:
           --allow-net
           --allow-run
           --target=aarch64-apple-darwin
-          --output nudge-aarch64-apple-darwin
+          --output aarch64-apple-darwin/nudge
           nudge.ts
+      - name: Nudge the 🍎 💪 binary
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: aarch64-apple-darwin
+          path: aarch64-apple-darwin/nudge
       - name: 🔨 Nudge for 🍎
         run: >-
           deno compile
           --allow-net
           --allow-run
           --target=x86_64-apple-darwin
-          --output nudge-x86_64-apple-darwin
+          --output x86_64-apple-darwin/nudge
           nudge.ts
+      - name: Nudge the 🍎 binary
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: x86_64-apple-darwin
+          path: x86_64-apple-darwin/nudge
       - name: 🔨 Nudge for 🐧
         run: >-
           deno compile
           --allow-net
           --allow-run
           --target=x86_64-unknown-linux-gnu
-          --output nudge-x86_64-unknown-linux-gnu
+          --output x86_64-unknown-linux-gnu/nudge
           nudge.ts
-      - name: Upload the artifacts
-        uses: skx/github-action-publish-binaries@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Nudge the 🐧 binary
+        uses: actions/upload-artifact@v3.0.0
         with:
-          args: "nudge-*"
+          name: x86_64-unknown-linux-gnu
+          path: x86_64-unknown-linux-gnu/nudge
