@@ -8,6 +8,10 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@master
+      - name: Setup Deno
+        uses: denoland/setup-deno@master
+      - name: Show deno version
+        run: deno --version
       - name: Generate the artifacts
         uses: skx/github-action-build@master
       - name: Upload the artifacts
