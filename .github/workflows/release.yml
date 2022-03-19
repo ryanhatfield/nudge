@@ -12,8 +12,30 @@ jobs:
         uses: denoland/setup-deno@v1.1.0
       - name: Show deno version
         run: deno --version
-      - name: Generate the artifacts
-        uses: skx/github-action-build@master
+      - name: 🔨 Nudge for 🍎 💪
+        run: >-
+          deno compile
+          --allow-net
+          --allow-run
+          --target=aarch64-apple-darwin
+          --output nudge-aarch64-apple-darwin
+          nudge.ts
+      - name: 🔨 Nudge for 🍎
+        run: >-
+          deno compile
+          --allow-net
+          --allow-run
+          --target=x86_64-apple-darwin
+          --output nudge-x86_64-apple-darwin
+          nudge.ts
+      - name: 🔨 Nudge for 🐧
+        run: >-
+          deno compile
+          --allow-net
+          --allow-run
+          --target=x86_64-unknown-linux-gnu
+          --output nudge-x86_64-unknown-linux-gnu
+          nudge.ts
       - name: Upload the artifacts
         uses: skx/github-action-publish-binaries@master
         env:
