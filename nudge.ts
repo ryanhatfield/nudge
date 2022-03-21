@@ -6,13 +6,15 @@ const args = parse(Deno.args, {
     port: 4325,
     cmd: "echo",
     args: "nudge",
+    status: 204,
   },
 });
 
 const port = args.port as number;
 const cmd = [args.cmd as string, args.args];
+const status = args.status as number;
 
-serve(() => {
+await serve(() => {
   Deno.run({ cmd });
-  return new Response(null, { status: 202 });
+  return new Response(null, { status });
 }, { port });
